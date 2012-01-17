@@ -7,119 +7,99 @@ namespace FancyClockService
 {
     public class FancyClockFormatter
     {
-        public virtual string GetHour(TimeSpan Time)
+        public virtual TimeWords GetHour(TimeSpan Time)
         {
-            string Hour;
+           
+            TimeWords Hour = new TimeWords();
+
             switch (Time.Hours % 12)
             {
-                case 0: Hour = TimeWords.Twelve.ToString(); break;
-                case 1: Hour = TimeWords.One.ToString(); break;
-                case 2: Hour = TimeWords.Two.ToString(); break;
-                case 3: Hour = TimeWords.Three.ToString(); break;
-                case 4: Hour = TimeWords.Four.ToString(); break;
-                case 5: Hour = TimeWords.Five.ToString(); break;
-                case 6: Hour = TimeWords.Six.ToString(); break;
-                case 7: Hour = TimeWords.Seven.ToString(); break;
-                case 8: Hour = TimeWords.Eight.ToString(); break;
-                case 9: Hour = TimeWords.Nine.ToString(); break;
-                case 10: Hour = TimeWords.Ten.ToString(); break;
-                case 11: Hour = TimeWords.Eleven.ToString(); break;
-                case 12: Hour = TimeWords.Twelve.ToString(); break;
+                case 0: Hour.Twelve = true; break;
+                case 1: Hour.One = true; break;
+                case 2: Hour.Two = true; break;
+                case 3: Hour.Three = true; break;
+                case 4: Hour.Four = true; break;
+                case 5: Hour.Five = true; break;
+                case 6: Hour.Six = true; break;
+                case 7: Hour.Seven = true; break;
+                case 8: Hour.Eight = true; break;
+                case 9: Hour.Nine = true; break;
+                case 10: Hour.Ten = true; break;
+                case 11: Hour.Eleven = true; break;
+                case 12: Hour.Twelve = true; break;
                 default: throw new NotSupportedException();
             }
 
             return Hour;
             }
 
-        public virtual int GetHourPhrase(TimeSpan Time)
-        {
-            int Hour;
-            switch (Time.Hours % 12)
-            {
-                case 0: Hour = TimeWords.Twelve.ToValue(); break;
-                case 1: Hour = TimeWords.One.ToValue(); break;
-                case 2: Hour = TimeWords.Two.ToValue(); break;
-                case 3: Hour = TimeWords.Three.ToValue(); break;
-                case 4: Hour = TimeWords.Four.ToValue(); break;
-                case 5: Hour = TimeWords.Five.ToValue(); break;
-                case 6: Hour = TimeWords.Six.ToValue(); break;
-                case 7: Hour = TimeWords.Seven.ToValue(); break;
-                case 8: Hour = TimeWords.Eight.ToValue(); break;
-                case 9: Hour = TimeWords.Nine.ToValue(); break;
-                case 10: Hour = TimeWords.Ten.ToValue(); break;
-                case 11: Hour = TimeWords.Eleven.ToValue(); break;
-                case 12: Hour = TimeWords.Twelve.ToValue(); break;
-                default: throw new NotSupportedException();
-            }
+      
 
-            return Hour;
-        }
-
-        public virtual string GetMinute(TimeSpan Time)
+        public virtual TimeWords GetMinute(TimeSpan Time)
         {
-            string Minute;
+            TimeWords Minute = new TimeWords();
             switch (Time.Minutes)
             {
                 case 58:
                 case 59:
                 case 0:
                 case 1:
-                case 2: return null;
+                case 2: return Minute;
                 case 3:
                 case 4:
                 case 5:
                 case 6:
-                case 7: Minute = TimeWords.FiveMinute.ToString(); break;
+                case 7: Minute.FiveMinute=true; break;
                 case 8:
                 case 9:
                 case 10:
                 case 11:
-                case 12: Minute = TimeWords.TenMinute.ToString(); break;
+                case 12: Minute.TenMinute = true; break;
                 case 13:
                 case 14:
                 case 15:
                 case 16:
-                case 17: Minute = TimeWords.Quarter.ToString(); break;
+                case 17: Minute.Quarter = true; break;
                 case 18:
                 case 19:
                 case 20:
                 case 21:
-                case 22: Minute = TimeWords.Twenty.ToString(); break;
+                case 22: Minute.Twenty = true; break;
                 case 23: 
                 case 24:
                 case 25:
                 case 26:
-                case 27: Minute = TimeWords.Twenty.ToString() + " " + TimeWords.FiveMinute.ToString(); break;
+                case 27: Minute.Twenty = true; Minute.FiveMinute = true; break;
                 case 28:
                 case 29:
                 case 30:
                 case 31:
-                case 32: Minute = TimeWords.Half.ToString(); break;
+                case 32: Minute.Half = true; break;
                 case 33:
                 case 34:
                 case 35:
                 case 36:
-                case 37: Minute = TimeWords.Twenty.ToString() + " " + TimeWords.FiveMinute.ToString(); break;
+                case 37: Minute.Twenty = true; Minute.FiveMinute = true; break;
                 case 38:
                 case 39:
                 case 40:
                 case 41:
-                case 42: Minute = TimeWords.Twenty.ToString(); break;
+                case 42: Minute.Twenty = true; break;
                 case 43:
                 case 44:
                 case 45:
                 case 46:
-                case 47: Minute = TimeWords.Quarter.ToString(); break;
+                case 47: Minute.Quarter = true; break;
                 case 48:
                 case 49:
                 case 50:
                 case 51:
-                case 52: Minute = TimeWords.TenMinute.ToString(); break;
+                case 52: Minute.TenMinute = true; break;
                 case 53:
                 case 54:
                 case 55:
                 case 56:
-                case 57: Minute = TimeWords.FiveMinute.ToString(); break;
+                case 57: Minute.FiveMinute = true; break;
                 
 
 
@@ -131,98 +111,14 @@ namespace FancyClockService
             //Past: 3-27
             string Modifier = string.Empty;
             if ((Time.Minutes) >= 33 & (Time.Minutes) <= 57)
-                Modifier=TimeWords.To.ToString();
+                Minute.To = true;
             else if ((Time.Minutes) >= 3 & (Time.Minutes) <= 27)
-                Modifier = TimeWords.Past.ToString();
+                Minute.Past = true;
 
 
-            return Minute + " " + Modifier;
+            return Minute;
            
         }
 
-        public virtual int GetMinutePhrase(TimeSpan Time)
-        {
-            int MinutePhrase;
-            switch (Time.Minutes)
-            {
-                case 58:
-                case 59:
-                case 0:
-                case 1:
-                case 2: return 0;
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7: MinutePhrase = TimeWords.FiveMinute.ToValue(); break;
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12: MinutePhrase = TimeWords.TenMinute.ToValue(); break;
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17: MinutePhrase = TimeWords.Quarter.ToValue(); break;
-                case 18:
-                case 19:
-                case 20:
-                case 21:
-                case 22: MinutePhrase = TimeWords.Twenty.ToValue(); break;
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27: MinutePhrase = TimeWords.Twenty.ToValue() + TimeWords.FiveMinute.ToValue(); break;
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32: MinutePhrase = TimeWords.Half.ToValue(); break;
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37: MinutePhrase = TimeWords.Twenty.ToValue() + TimeWords.FiveMinute.ToValue(); break;
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42: MinutePhrase = TimeWords.Twenty.ToValue(); break;
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47: MinutePhrase = TimeWords.Quarter.ToValue(); break;
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52: MinutePhrase = TimeWords.TenMinute.ToValue(); break;
-                case 53:
-                case 54:
-                case 55:
-                case 56:
-                case 57: MinutePhrase = TimeWords.FiveMinute.ToValue(); break;
-
-
-
-
-                default: throw new NotSupportedException();
-            }
-
-            //To: 33-57
-            //Past: 3-27
-            int Modifier = 0;
-            if ((Time.Minutes) >= 33 & (Time.Minutes) <= 57)
-                Modifier = TimeWords.To.ToValue();
-            else if ((Time.Minutes) >= 3 & (Time.Minutes) <= 27)
-                Modifier = TimeWords.Past.ToValue();
-
-
-            return MinutePhrase + Modifier;
-
-        }
     }
 }

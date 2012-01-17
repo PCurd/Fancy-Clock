@@ -42,8 +42,10 @@ namespace FancyClockServiceTests
         public void Calls_GetHour_To_Round_Hour()
         {
             var Time = new TimeSpan(1, 35, 0);//01:35:00
-            mockFancyClockFormatter.Setup(x => x.GetHour(Time)).Returns("2");
-            var Expected = "2";
+            var words = new TimeWords();
+            words.One = true; words.Half = true; words.Past = true;
+            mockFancyClockFormatter.Setup(x => x.GetHour(Time)).Returns(words);
+            var Expected = words;
             var clock = new FancyClock(mockFancyClockFormatter.Object);
             clock.Time = Time;
             var Actual = clock.Hour;
@@ -54,8 +56,10 @@ namespace FancyClockServiceTests
         public void Calls_GetHour_To_Round_Minute()
         {
             var Time = new TimeSpan(1, 35, 0);//01:35:00
-            mockFancyClockFormatter.Setup(x => x.GetMinute(Time)).Returns("30");
-            var Expected = "30";
+            var words = new TimeWords();
+            words.One = true; words.Half = true; words.Past = true;
+            mockFancyClockFormatter.Setup(x => x.GetMinute(Time)).Returns(words);
+            var Expected = words;
             var clock = new FancyClock(mockFancyClockFormatter.Object);
             clock.Time = Time;
             var Actual = clock.Minute;
