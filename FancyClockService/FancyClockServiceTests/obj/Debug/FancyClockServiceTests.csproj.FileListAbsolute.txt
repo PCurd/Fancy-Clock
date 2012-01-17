@@ -1,0 +1,7 @@
+C:\Documents and Settings\PC\My Documents\My Dropbox\Transferred\Fancy-Clock\FancyClockService\FancyClockServiceTests\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\PC\My Documents\My Dropbox\Transferred\Fancy-Clock\FancyClockService\FancyClockServiceTests\bin\Debug\FancyClockServiceTests.dll
+C:\Documents and Settings\PC\My Documents\My Dropbox\Transferred\Fancy-Clock\FancyClockService\FancyClockServiceTests\bin\Debug\FancyClockServiceTests.pdb
+C:\Documents and Settings\PC\My Documents\My Dropbox\Transferred\Fancy-Clock\FancyClockService\FancyClockServiceTests\bin\Debug\FancyClockService.dll
+C:\Documents and Settings\PC\My Documents\My Dropbox\Transferred\Fancy-Clock\FancyClockService\FancyClockServiceTests\bin\Debug\FancyClockService.pdb
+C:\Documents and Settings\PC\My Documents\My Dropbox\Transferred\Fancy-Clock\FancyClockService\FancyClockServiceTests\obj\Debug\FancyClockServiceTests.dll
+C:\Documents and Settings\PC\My Documents\My Dropbox\Transferred\Fancy-Clock\FancyClockService\FancyClockServiceTests\obj\Debug\FancyClockServiceTests.pdb
