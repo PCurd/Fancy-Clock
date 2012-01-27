@@ -173,16 +173,38 @@ namespace FancyClockServiceTests
         }
 #endregion
 
-  
-        //[TestMethod()]
-        //public void GetTime_Returns_Five_To_Two_On_One_Fifty_Five()
-        //{
-        //    FancyClockFormatter target = new FancyClockFormatter();
-        //    TimeSpan Time = new TimeSpan(1, 55, 3);
-        //    TimeWords expected = new TimeWords();
-        //    expected.Two = true; expected.FiveMinute = true; expected.To = true;
-        //    var actual = target.GetTime(Time);
-        //    Assert.AreEqual(expected, actual);
-        //}
+
+        [TestMethod()]
+        public void GetTime_Returns_Five_To_Two_On_One_Fifty_Five()
+        {
+            FancyClockFormatter target = new FancyClockFormatter();
+            TimeSpan Time = new TimeSpan(1, 55, 3);
+            TimeWords expected = new TimeWords();
+            expected.Two = true; expected.FiveMinute = true; expected.To = true;
+            var actual = target.GetTime(Time);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void GetTime_Returns_Five_To_One_On_Twelve_Fifty_Five()
+        {
+            FancyClockFormatter target = new FancyClockFormatter();
+            TimeSpan Time = new TimeSpan(12, 55, 3);
+            TimeWords expected = new TimeWords();
+            expected.One = true; expected.FiveMinute = true; expected.To = true;
+            var actual = target.GetTime(Time);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void GetTime_Returns_Five_Past_Two_On_Two_Five()
+        {
+            FancyClockFormatter target = new FancyClockFormatter();
+            TimeSpan Time = new TimeSpan(2, 5, 3);
+            TimeWords expected = new TimeWords();
+            expected.Two = true; expected.FiveMinute = true; expected.Past = true;
+            var actual = target.GetTime(Time);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

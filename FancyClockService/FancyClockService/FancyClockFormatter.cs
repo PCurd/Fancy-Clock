@@ -7,6 +7,19 @@ namespace FancyClockService
 {
     public class FancyClockFormatter
     {
+        public virtual TimeWords GetTime(TimeSpan Time)
+        {
+            TimeWords Hour = new TimeWords();
+            Hour = GetHour(Time);
+            TimeWords Minute = new TimeWords();
+            Minute = GetMinute(Time);
+
+            if (Minute.To)
+                Hour--;
+
+            return Hour + Minute;
+        }
+
         public virtual TimeWords GetHour(TimeSpan Time)
         {
            
